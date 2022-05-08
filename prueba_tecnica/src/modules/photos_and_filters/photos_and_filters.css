@@ -176,3 +176,12 @@
 .photos_and_filters .photographs .pages img[alt="ArrowRight"]{
     transform: rotate(180deg);
 }
+
+.photos_and_filters .photographs .pages span{
+    margin: 0 0.3em;
+}
+
+.photos_and_filters .photographs .pages .disabled{
+    pointer-events: none;
+    opacity: 0.25;
+}

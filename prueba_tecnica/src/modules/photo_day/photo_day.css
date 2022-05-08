@@ -26,8 +26,11 @@
 /*FOTO DE LA IMAGEN DEL DIA*/
 .photo_day .main_photo{
     width: 100%;
+    height: 28.5em;
     position: relative;
     margin-bottom: 1.75em;
+    background-position: center;
+    background-size: cover;
 }
 
 .photo_day .main_photo img{
@@ -74,6 +77,7 @@
 
 .photo_day .information_main_photo .text_information_photo{
     line-height: 1.5em;
+    font-size: 0.9em;
     color: rgb(108, 108, 108);
 }
 /*PEOPLE ALSO BUY Y DETAILS DE LA FOTO*/
@@ -101,12 +105,11 @@
 .photo_day .information_main_photo .alsobuy_and_details .alsobuy_images .alsobuy_image{
     width: 29%;
     margin: 2em 0;
+    height: 8em;
+    background-position: center;
+    background-size: cover;
 }
 
-.photo_day .information_main_photo .alsobuy_and_details .alsobuy_images .alsobuy_image img{
-    width: 100%;
-    height: 8em;
-}
 /*DETAILS*/
 .photo_day .information_main_photo .alsobuy_and_details .details{
     width: 100%;
