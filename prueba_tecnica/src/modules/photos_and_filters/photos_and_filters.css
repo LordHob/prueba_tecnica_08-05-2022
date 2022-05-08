@@ -1,0 +1,173 @@
+.photos_and_filters{
+    width: 100%;
+    margin: 2.5em 0;
+    font-size: 1.3em;
+}
+
+.photos_and_filters .container_filters_photographs{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+/*HEADER DE FOTOS Y FILTROS*/
+.photos_and_filters .header{
+    font-size: 1.15em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.photos_and_filters .header .photos_and_filters_title{
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.photos_and_filters .header .photos_and_filters_title .separator{
+    margin: 0 0.4em;
+}
+
+.photos_and_filters .header .photos_and_filters_title .premium_photos{
+    color: rgb(182, 182, 182);
+    font-weight: normal;
+}
+
+.photos_and_filters .header img{
+    width: 0.75em;
+}
+
+/*FILTROS*/
+.photos_and_filters .filters{
+    font-size: 1.1em;
+    width: 23%;
+}
+
+.photos_and_filters .filters hr{
+    height: 0.1em;
+    margin-bottom: 1.5em;
+}
+.photos_and_filters .filters{
+    font-size: 1.1em;
+    width: 23%;
+}
+
+.photos_and_filters .filters .title_filters{
+    font-weight: bold;
+}
+
+.photos_and_filters .filters .checkbox_list{
+    margin: 1.5em 0;
+    padding-left: 0.2em;
+}
+
+.photos_and_filters .filters .checkbox_list .checkbox_item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 2em 0;
+}
+
+.photos_and_filters .filters .checkbox_list input[type="checkbox"]{
+    -webkit-appearance: none;
+    position: relative;
+	background-color: white;
+	border: 3px solid black;
+    width:1.9em;
+    height:1.9em;
+}
+
+.photos_and_filters .filters .checkbox_list input[type="checkbox"]:checked:after {
+    content: url(../../img/tick.png);
+    font-size: 1.75em;
+    position: absolute;
+    top: -0.1em;
+    left: 1px;
+}
+
+.photos_and_filters .filters .checkbox_list label{
+    margin: 0 1em;
+}
+/*FOTOS*/
+.photos_and_filters .photographs{
+    width: 73%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.photos_and_filters .photographs .photographs_list{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.photos_and_filters .photographs .photography{
+    width: 30%;
+    margin-bottom: 2.5em;
+}
+
+.photos_and_filters .photographs .photography .image_and_button{
+    width: 100%;
+    height: 20em;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+}
+
+.photos_and_filters .photographs .photography img{
+    width: 100%;
+}
+
+.photos_and_filters .photographs .photography .add_cart_photography{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    background-color: black;
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-size: 1.15em;
+    padding: 0.5em 0;
+    cursor: pointer;
+}
+/*DETALLES DE CADA FOTO*/
+.photos_and_filters .photographs .photography .category{
+    color: rgb(84, 84, 84);
+    font-weight: bold;
+    font-size: 1.1em;
+    margin: 0.25em 0;
+}
+
+.photos_and_filters .photographs .photography .title{
+    color: black;
+    font-weight: bold;
+    font-size: 1.6em;
+    margin: 0.25em 0;
+}
+
+.photos_and_filters .photographs .photography .price{
+    color: rgb(84, 84, 84);
+    font-size: 1.5em;
+    margin: 0.25em 0;
+}
+/*PAGINACION*/
+.photos_and_filters .photographs .pages{
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.photos_and_filters .photographs .pages img{
+    width: 0.4em;
+    margin: 0 0.75em;
+    cursor: pointer;
+}
+
+.photos_and_filters .photographs .pages img[alt="ArrowRight"]{
+    transform: rotate(180deg);
+}

@@ -1,11 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './modules/header/header.jsx';
+import SelectedPhoto from './modules/photo_day/photo_day.jsx';
+import PhotosAndFilters from './modules/photos_and_filters/photos_and_filters.jsx';
 
 function App() {
   return (
     <div className="App">
       <div className="container">
-        hola
+        <Header/>
+        <SelectedPhoto/>
+        <PhotosAndFilters/>
       </div>
     </div>
   );
