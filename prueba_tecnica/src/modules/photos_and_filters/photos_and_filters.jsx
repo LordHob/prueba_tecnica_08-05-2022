@@ -1,15 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './photos_and_filters.css';
 import order from '../../img/order.png';
-import foto1 from '../../img/foto1.jpg';
-import foto2 from '../../img/foto2.jpeg';
-import perro from '../../img/perro.jpg';
 import arrow from '../../img/arrow.png';
 import { photos } from '../../photos.js';
 
 const SelectedPhoto = () =>{
+    
+    const [photosFiltered, setPhotosFiltered] = useState([]);
+    const [filters, setFilters] = useState([]);
 
-    console.log(photos);
+    useEffect(()=>{
+        console.log(filters);
+        if (filters.length !== 0) {
+            setPhotosFiltered(photosFiltered => []);
+            filters.map((filter)=>{
+                photos.map((photo) =>{
+                    if (photo.category === filter) {
+                        setPhotosFiltered(photosFiltered => [...photosFiltered, photo]);
+                    }
+                })
+            });
+        } else{
+            setPhotosFiltered(photos);
+        }
+    }, [filters])
+
+    const addFilter = (filter) => {
+        if (filters.includes(filter)) {
+            setFilters(filters.filter(key => key !== filter));
+            return;
+        } else{
+            setFilters([...filters, filter]);
+            return;
+        }
+    }
 
     return(
         <div className='photos_and_filters'>
@@ -32,32 +56,32 @@ const SelectedPhoto = () =>{
                         <div className="title_filters">Category</div>
                         <div className="checkbox_list">
                             <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">People</label>
+                                <input type="checkbox" name="People" id="People" onChange={() => addFilter("People")}/>
+                                <label htmlFor="People">People</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">Premium</label>
+                                <input type="checkbox" name="Premium" id="Premium" onChange={() => addFilter("Premium")}/>
+                                <label htmlFor="Premium">Premium</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">Pets</label>
+                                <input type="checkbox" name="Pets" id="Pets" onChange={() => addFilter("Pets")}/>
+                                <label htmlFor="Pets">Pets</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">Food</label>
+                                <input type="checkbox" name="Food" id="Food" onChange={() => addFilter("Food")}/>
+                                <label htmlFor="Food">Food</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">Landmarks</label>
+                                <input type="checkbox" name="Landmarks" id="Landmarks" onChange={() => addFilter("Landmarks")}/>
+                                <label htmlFor="Landmarks">Landmarks</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">Cities</label>
+                                <input type="checkbox" name="Cities" id="Cities" onChange={() => addFilter("Cities")}/>
+                                <label htmlFor="Cities">Cities</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">Nature</label>
+                                <input type="checkbox" name="Nature" id="Nature" onChange={() => addFilter("Nature")}/>
+                                <label htmlFor="Nature">Nature</label>
                             </div>
                         </div>
                     </div>
@@ -66,27 +90,27 @@ const SelectedPhoto = () =>{
                         <div className="title_filters">Price range</div>
                         <div className="checkbox_list">
                             <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">Lower than $20</label>
+                                <input type="checkbox" name="lower_than_20" id="lower_than_20" />
+                                <label htmlFor="lower_than_20">Lower than $20</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">$20 - $100</label>
+                                <input type="checkbox" name="20_100" id="20_100" />
+                                <label htmlFor="20_100">$20 - $100</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">$100 - $200</label>
+                                <input type="checkbox" name="100_200" id="100_200" />
+                                <label htmlFor="100_200">$100 - $200</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">More than $200</label>
+                                <input type="checkbox" name="more_than_200" id="more_than_200" />
+                                <label htmlFor="more_than_200">More than $200</label>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="photographs">
                     <div className="photographs_list">
-                        {photos.map((photo) =>{
+                        {photosFiltered.map((photo) =>{
                             return(
                                 <div className="photography">
                                     <div className="image_and_button" style={{backgroundImage: `url("${photo.url}")`}}>

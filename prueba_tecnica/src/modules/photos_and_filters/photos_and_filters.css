@@ -75,6 +75,11 @@
 	border: 3px solid black;
     width:1.9em;
     height:1.9em;
+    cursor: pointer;
+}
+
+.photos_and_filters .filters .checkbox_list label{
+    cursor: pointer;
 }
 
 .photos_and_filters .filters .checkbox_list input[type="checkbox"]:checked:after {
