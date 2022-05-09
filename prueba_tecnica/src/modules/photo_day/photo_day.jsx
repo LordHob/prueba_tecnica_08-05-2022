@@ -51,7 +51,7 @@ const PhotoDay = (props) =>{
             </div>
             {document.documentElement.scrollWidth <= 768
             ?
-            <div className="add_to_cart_photo_day_movil">ADD TO CART</div>
+            <div className="add_to_cart_photo_day_movil" onClick={() => props.addToCart(maxSales[0])}>ADD TO CART</div>
             :
             null
             }

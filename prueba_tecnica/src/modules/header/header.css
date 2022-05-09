@@ -109,3 +109,31 @@
     margin-bottom: 1.5em;
     cursor: pointer;
 }
+
+/*
+------------------------------------------------------------------------------------------------------------------
+VERSION MOVIL
+------------------------------------------------------------------------------------------------------------------
+*/
+
+@media only screen and (max-width: 619px) {
+    .header .shopping_cart .shopping_cart_information{
+        font-size: 0.9em;
+    }
+}
+
+@media only screen and (max-width: 545px) {
+    .header .shopping_cart .shopping_cart_information{
+        font-size: 0.65em;
+        top: 4.2em;
+        right: 11.4em
+    }
+}
+
+@media only screen and (max-width: 444px) {
+    .header .shopping_cart .shopping_cart_information{
+        font-size: 0.7em;
+        top: 4.2em;
+        right: 11.4em
+    }
+}

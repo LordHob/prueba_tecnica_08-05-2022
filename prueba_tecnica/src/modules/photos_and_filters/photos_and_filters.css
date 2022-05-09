@@ -54,6 +54,7 @@
 
 .photos_and_filters .header .order select{
     all: unset;
+    font-family: 'Archivo', sans-serif;
     width: 40%;
     z-index: 4;
 }
@@ -439,6 +440,6 @@ VERSION MOVIL
         font-size: 1.2em;
     }
     .photos_and_filters .photographs .photography .image_and_button{
-        height: 30em;
+        height: 36em;
     }
 }

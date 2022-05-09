@@ -226,9 +226,9 @@ VERSION MOVIL
 
 @media only screen and (max-width: 444px) {
     .photo_day .information_main_photo .alsobuy_and_details .alsobuy_images .alsobuy_image{
-        width: 3.9em;
+        width: 6em;
         margin: 2em 0;
-        height: 5em;
+        height: 7.4em;
         background-position: center;
         background-size: cover;
     }
