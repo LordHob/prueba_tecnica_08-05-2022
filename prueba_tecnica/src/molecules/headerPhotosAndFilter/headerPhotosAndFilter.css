@@ -80,7 +80,7 @@ VERSION MOVIL
 
 @media only screen and (max-width: 450px) {
     .photos_and_filters .header .photos_and_filters_title{
-        font-size: 0.7em;
+        font-size: 1.2em;
         font-weight: bold;
     }
 }
