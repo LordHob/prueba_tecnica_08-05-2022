@@ -57,6 +57,8 @@
     font-family: 'Archivo', sans-serif;
     width: 40%;
     z-index: 4;
+    font-size: 1.15em;
+    color: black;
 }
 
 .photos_and_filters .header .order img[alt="Select"]{
