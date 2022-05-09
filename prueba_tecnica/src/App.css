@@ -38,3 +38,9 @@ VERSION MOVIL
     width: 95%;
   }
 }
+
+@media only screen and (max-width: 444px) {
+  .container {
+    font-size: 0.7em;
+  }
+}

@@ -14,7 +14,7 @@
 }
 /*CARRITO DE LA COMPRAR CON SUS PRODUCTOS*/
 .header .shopping_cart .shopping_cart_information{
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;

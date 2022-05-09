@@ -220,7 +220,7 @@ VERSION MOVIL
 @media only screen and (max-width: 450px) {
     .photo_day .main_photo{
       width: 100%;
-      height: 10em;
+      height: 12em;
     }
 }
 

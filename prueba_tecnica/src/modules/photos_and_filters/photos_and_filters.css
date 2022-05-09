@@ -438,4 +438,7 @@ VERSION MOVIL
         margin-bottom: 2.5em;
         font-size: 1.2em;
     }
+    .photos_and_filters .photographs .photography .image_and_button{
+        height: 30em;
+    }
 }
