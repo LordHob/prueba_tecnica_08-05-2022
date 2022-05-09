@@ -4,7 +4,8 @@ import order from '../../img/order.png';
 import arrow from '../../img/arrow.png';
 import filter from '../../img/filter.png';
 import { photos } from '../../photos.js';
-import Photography from '../../molecules/photography/photography';
+import Photography from '../../atoms/photography/photography';
+import CheckboxItem from '../../atoms/checkboxItem/checkboxItem';
 
 const SelectedPhoto = (props) =>{
     
@@ -31,10 +32,11 @@ const SelectedPhoto = (props) =>{
         } else{
             setPhotosPerPage(4);
         }
-    })
-    /*GUARDA FOTOS CON FILTRO SI EXISTE ALGUN FILTRO APLICADO, Y SI NO GUARDA TODAS
-    GUARDA LAS FOTOS FILTRADAS POR PRECIO EN SU PROPIO ARRAY
-    GUARDA LAS FOTOS FILTRADAS POR CATEGORIAS EN SU PROPIO ARRAY
+    }, [])
+    /*GUARDA FOTOS CON FILTRO SI EXISTE ALGUN FILTRO APLICADO, Y SI NO GUARDA TODAS.
+    GUARDA LAS FOTOS FILTRADAS POR PRECIO EN SU PROPIO ARRAY.
+    GUARDA LAS FOTOS FILTRADAS POR CATEGORIAS EN SU PROPIO ARRAY.
+    SI HAY 2 TIPOS DE FILTRO APLICADOS, MUESTRA LAS COINCIDENCIAS DE AMBOS ARRAYS.
     */
     useEffect(()=>{
         setActivePage(1);
@@ -148,7 +150,7 @@ const SelectedPhoto = (props) =>{
         }
     }, [activePage]);
 
-    /*CONFIGURA QUE CRITERIO SIGUE PARA ORDENAR LAS FOTOS*/
+    /*CONFIGURA QUÉ CRITERIO SIGUE PARA ORDENAR LAS FOTOS*/
     const configOrderKey = () => {
         setOrderKey(document.getElementById("categories_select").selectedOptions[0].innerHTML);
     }
@@ -229,6 +231,7 @@ const SelectedPhoto = (props) =>{
         }
     }
 
+    /*MOVIMIENTO ENTRE PÁGINAS*/
     const nextPage = () => {
         setIndexPagination(indexPagination + photosPerPage);
         setActivePage(activePage + 1);
@@ -239,6 +242,7 @@ const SelectedPhoto = (props) =>{
         setActivePage(activePage - 1);
     }
 
+    /*CONTROLA VISUALIZACIÓN DE PANTALLA DE FILTROS EN MOVIL*/
     const seeFilters = () => {
         document.getElementById("filters").style.display = "inline-block";
         setShowFiltersMovil(true)
@@ -307,34 +311,14 @@ const SelectedPhoto = (props) =>{
                         null
                         }
                         <div className="checkbox_list">
-                            <div className="checkbox_item">
-                                <input type="checkbox" className='input_checkbox' name="People" id="People" onChange={() => addFilter("People")}/>
-                                <label htmlFor="People">People</label>
-                            </div>
-                            <div className="checkbox_item">
-                                <input type="checkbox" className='input_checkbox' name="Premium" id="Premium" onChange={() => addFilter("Premium")}/>
-                                <label htmlFor="Premium">Premium</label>
-                            </div>
-                            <div className="checkbox_item">
-                                <input type="checkbox" className='input_checkbox' name="Pets" id="Pets" onChange={() => addFilter("Pets")}/>
-                                <label htmlFor="Pets">Pets</label>
-                            </div>
-                            <div className="checkbox_item">
-                                <input type="checkbox" className='input_checkbox' name="Food" id="Food" onChange={() => addFilter("Food")}/>
-                                <label htmlFor="Food">Food</label>
-                            </div>
-                            <div className="checkbox_item">
-                                <input type="checkbox" className='input_checkbox' name="Landmarks" id="Landmarks" onChange={() => addFilter("Landmarks")}/>
-                                <label htmlFor="Landmarks">Landmarks</label>
-                            </div>
-                            <div className="checkbox_item">
-                                <input type="checkbox" className='input_checkbox' name="Cities" id="Cities" onChange={() => addFilter("Cities")}/>
-                                <label htmlFor="Cities">Cities</label>
-                            </div>
-                            <div className="checkbox_item">
-                                <input type="checkbox" className='input_checkbox' name="Nature" id="Nature" onChange={() => addFilter("Nature")}/>
-                                <label htmlFor="Nature">Nature</label>
-                            </div>
+                            {filtersCategory.map((filter) =>{
+                                return(
+                                    <CheckboxItem
+                                        filter={filter}
+                                        addFilter={addFilter}
+                                    />
+                                )
+                            })}
                         </div>
                     </div>
                     <hr />
@@ -374,13 +358,13 @@ const SelectedPhoto = (props) =>{
                         {photosPaginated.map((photo) =>{
                             return(
                                 <Photography
-                                id={photo?.id}
-                                url={photo?.url}
-                                addToCart={props.addToCart}
-                                category={photo?.category}
-                                title={photo?.title}
-                                price={photo?.price}
-                                photo={photo}
+                                    id={photo?.id}
+                                    url={photo?.url}
+                                    addToCart={props.addToCart}
+                                    category={photo?.category}
+                                    title={photo?.title}
+                                    price={photo?.price}
+                                    photo={photo}
                                 />
                             )
                         })}
