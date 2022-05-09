@@ -1,0 +1,102 @@
+.photos_and_filters .photographs .photography{
+    width: 12.3em;
+    margin: 0 0.25em;
+    margin-bottom: 2.5em;
+}
+
+.photos_and_filters .photographs .photography .image_and_button{
+    width: 12.3em;
+    height: 17.2em;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+}
+
+.photos_and_filters .photographs .photography img{
+    width: 100%;
+}
+
+.photos_and_filters .photographs .photography .add_cart_photography{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    background-color: black;
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-size: 1.15em;
+    padding: 0.5em 0;
+    cursor: pointer;
+}
+/*DETALLES DE CADA FOTO*/
+.photos_and_filters .photographs .photography .category{
+    color: rgb(84, 84, 84);
+    font-weight: bold;
+    font-size: 1.1em;
+    margin: 0.25em 0;
+}
+
+.photos_and_filters .photographs .photography .title{
+    color: black;
+    font-weight: bold;
+    font-size: 1.6em;
+    margin: 0.25em 0;
+}
+
+.photos_and_filters .photographs .photography .price{
+    color: rgb(84, 84, 84);
+    font-size: 1.5em;
+    margin: 0.25em 0;
+}
+
+/*
+------------------------------------------------------------------------------------------------------------------
+VERSION MOVIL
+------------------------------------------------------------------------------------------------------------------
+*/
+
+@media only screen and (max-width: 768px) {
+    .photos_and_filters .photographs .photography{
+        width: 100%;
+        margin: 0 0.25em;
+        margin-bottom: 2.5em;
+        font-size: 2.2em;
+    }
+    .photos_and_filters .photographs .photography .image_and_button{
+        width: 100%;
+        height: 25em;
+        position: relative;
+        background-position: center;
+        background-size: cover;
+    }
+}
+
+@media only screen and (max-width: 610px) {
+    .photos_and_filters .photographs .photography{
+        width: 100%;
+        margin: 0 0.25em;
+        margin-bottom: 2.5em;
+        font-size: 1.8em;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .photos_and_filters .photographs .photography{
+        width: 100%;
+        margin: 0 0.25em;
+        margin-bottom: 2.5em;
+        font-size: 1.5em;
+    }
+}
+
+@media only screen and (max-width: 444px) {
+    .photos_and_filters .photographs .photography{
+        width: 100%;
+        margin: 0 0.25em;
+        margin-bottom: 2.5em;
+        font-size: 1.2em;
+    }
+    .photos_and_filters .photographs .photography .image_and_button{
+        height: 36em;
+    }
+}

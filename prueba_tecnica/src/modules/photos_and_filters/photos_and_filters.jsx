@@ -4,6 +4,7 @@ import order from '../../img/order.png';
 import arrow from '../../img/arrow.png';
 import filter from '../../img/filter.png';
 import { photos } from '../../photos.js';
+import Photography from '../../molecules/photography/photography';
 
 const SelectedPhoto = (props) =>{
     
@@ -19,6 +20,9 @@ const SelectedPhoto = (props) =>{
     const [orderWay, setOrderWay] = useState("ASC");
     const [showFiltersMovil, setShowFiltersMovil] = useState(false);
     const [photosPerPage, setPhotosPerPage] = useState(6);
+
+    /*ARRAY CON LOS FILTROS DE LAS CATEGORÍAS*/
+    const filtersCategory = ['People', 'Premium', 'Pets', 'Food', 'Landmarks', 'Cities', 'Nature'];
 
     /*DETERMINA LA CANTIDAD DE FOTOS QUE SE VEN POR PÁGINA (6 EN VERSIÓN NORMAL Y 4 EN VERSIÓN MOVIL*/
     useEffect(() =>{
@@ -369,14 +373,15 @@ const SelectedPhoto = (props) =>{
                     <div className="photographs_list">
                         {photosPaginated.map((photo) =>{
                             return(
-                                <div className="photography" key={photo?.id}>
-                                    <div id={"photo" + photo?.id} className="image_and_button" style={{backgroundImage: `url("${photo?.url}")`}}>
-                                        <div className="add_cart_photography" onClick={() => props.addToCart(photo)}>ADD TO CART</div>
-                                    </div>
-                                    <div className="category">{photo?.category}</div>
-                                    <div className="title">{photo?.title}</div>
-                                    <div className="price">${photo?.price}</div>
-                                </div> 
+                                <Photography
+                                id={photo?.id}
+                                url={photo?.url}
+                                addToCart={props.addToCart}
+                                category={photo?.category}
+                                title={photo?.title}
+                                price={photo?.price}
+                                photo={photo}
+                                />
                             )
                         })}
                         
