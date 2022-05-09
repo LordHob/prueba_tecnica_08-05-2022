@@ -33,10 +33,40 @@
     font-weight: normal;
 }
 
-.photos_and_filters .header img{
-    width: 0.75em;
+.photos_and_filters .header .order{
+    width: 18%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
 }
 
+.photos_and_filters .header .order span{
+    color: rgb(182, 182, 182);
+}
+
+.photos_and_filters .header .order img[alt="Order"]{
+    margin-top: 1.5em;
+    width: 0.75em;
+    height: 0.75em;
+}
+
+.photos_and_filters .header .order select{
+    all: unset;
+    width: 40%;
+    z-index: 4;
+}
+
+.photos_and_filters .header .order img[alt="Select"]{
+    position: absolute;
+    right: 0.2em;
+    margin-top: 1.5em;
+    width: 0.5em;
+    transform: rotate(-90deg);
+    cursor: default;
+    z-index:3;
+}
 /*FILTROS*/
 .photos_and_filters .filters{
     font-size: 1.1em;
@@ -179,6 +209,11 @@
 
 .photos_and_filters .photographs .pages span{
     margin: 0 0.3em;
+    opacity: 0.25;
+}
+
+.photos_and_filters .photographs .pages .active{
+    opacity: 1;
 }
 
 .photos_and_filters .photographs .pages .disabled{
