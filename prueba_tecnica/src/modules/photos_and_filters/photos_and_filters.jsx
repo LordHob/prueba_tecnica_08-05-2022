@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './photos_and_filters.css';
 import order from '../../img/order.png';
 import arrow from '../../img/arrow.png';
+import filter from '../../img/filter.png';
 import { photos } from '../../photos.js';
 
 const SelectedPhoto = () =>{
@@ -16,9 +17,17 @@ const SelectedPhoto = () =>{
     const [pages, setPages] = useState([]);
     const [orderKey, setOrderKey] = useState("Price");
     const [orderWay, setOrderWay] = useState("ASC");
+    const [showFiltersMovil, setShowFiltersMovil] = useState(false);
+    const [photosPerPage, setPhotosPerPage] = useState(6);
 
-    
-    
+    /*DETERMINA LA CANTIDAD DE FOTOS QUE SE VEN POR PÁGINA (6 EN VERSIÓN NORMAL Y 4 EN VERSIÓN MOVIL*/
+    useEffect(() =>{
+        if (document.documentElement.scrollWidth > 768) {
+            setPhotosPerPage(6);
+        } else{
+            setPhotosPerPage(4);
+        }
+    })
     /*GUARDA FOTOS CON FILTRO SI EXISTE ALGUN FILTRO APLICADO, Y SI NO GUARDA TODAS
     GUARDA LAS FOTOS FILTRADAS POR PRECIO EN SU PROPIO ARRAY
     GUARDA LAS FOTOS FILTRADAS POR CATEGORIAS EN SU PROPIO ARRAY
@@ -92,20 +101,19 @@ const SelectedPhoto = () =>{
         }
     }, [filters]);
 
-    /*MUESTRA HASTA 6 FOTOS POR PAGINA AL CAMBIAR DE FILTROS, Y MUESTRO LA CANTIDAD DE PAGINAS TOTALES*/
+    /*MUESTRA HASTA 6 FOTOS POR PAGINA (4 EN VERSIÓN MOVIL) AL CAMBIAR DE FILTROS, Y MUESTRO LA CANTIDAD DE PAGINAS TOTALES*/
     useEffect(()=>{
-        console.log(photosFiltered);
         setIndexPagination(0);
         if (photosFiltered.length > 0) {
             setPhotosPaginated(photosPaginated => []);
-            for (let i = indexPagination; i < 6; i++) {
+            for (let i = indexPagination; i < photosPerPage; i++) {
                 if(photosFiltered[i]?.id){
                     setPhotosPaginated(photosPaginated => [...photosPaginated, photosFiltered[i]]);
                 }
             }
         }
-        let maxPage = Math.ceil(photosFiltered.length/6);
-        setMaxPages(Math.ceil(photosFiltered.length/6));
+        let maxPage = Math.ceil(photosFiltered.length/photosPerPage);
+        setMaxPages(Math.ceil(photosFiltered.length/photosPerPage));
         setPages(pages => []);
         for (let i = 1; i <= maxPage; i++) {
             setPages(pages => [...pages, <span id={i} className={activePage === i ? 'active' : ""}>{i}</span>]);
@@ -116,7 +124,7 @@ const SelectedPhoto = () =>{
     useEffect(()=>{
         if (photosFiltered.length > 0) {
             setPhotosPaginated(photosPaginated => []);
-            for (let i = indexPagination; i < indexPagination + 6; i++) {
+            for (let i = indexPagination; i < indexPagination + photosPerPage; i++) {
                 if(photosFiltered[i]?.id){
                     setPhotosPaginated(photosPaginated => [...photosPaginated, photosFiltered[i]]);
                 }
@@ -147,9 +155,7 @@ const SelectedPhoto = () =>{
         photosFiltered.map((photo) => {
             ordenedPhotos.push(photo);
         })
-        console.log(orderKey);
         if (orderKey === "Price") {
-            console.log(orderWay);
             if (orderWay === "ASC") {
                 ordenedPhotos.sort(function (a, b) {
                     if (a.price > b.price) {
@@ -160,7 +166,6 @@ const SelectedPhoto = () =>{
                     }
                     return 0;
                 })
-                console.log(ordenedPhotos);
                 setOrderWay("DESC");
                 setPhotosFiltered(ordenedPhotos);
                 return;
@@ -221,13 +226,34 @@ const SelectedPhoto = () =>{
     }
 
     const nextPage = () => {
-        setIndexPagination(indexPagination + 6);
+        setIndexPagination(indexPagination + photosPerPage);
         setActivePage(activePage + 1);
     }
     
     const previousPage = () => {
-        setIndexPagination(indexPagination - 6);
+        setIndexPagination(indexPagination - photosPerPage);
         setActivePage(activePage - 1);
+    }
+
+    const seeFilters = () => {
+        document.getElementById("filters").style.display = "inline-block";
+        setShowFiltersMovil(true)
+    }
+
+    const closeFilters = () => {
+        document.getElementById("filters").style.display = "none";
+        setShowFiltersMovil(false)
+    }
+
+    const closeAndClearFilters = () => {
+        let checkboxes = document.getElementsByClassName("input_checkbox");
+        console.log(checkboxes);
+        for (let i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = false;
+        }
+        document.getElementById("filters").style.display = "none";
+        setShowFiltersMovil(false)
+        setFilters([]);
     }
 
     return(
@@ -236,6 +262,8 @@ const SelectedPhoto = () =>{
                 <div className="photos_and_filters_title">
                     <span>Photography</span><span className='separator'> / </span><span className='premium_photos'>Premium Photos</span>
                 </div>
+                {document.documentElement.scrollWidth > 768
+                ?
                 <div className="order">
                     <img src={order} alt="Order" onClick={() => orderPhotos()}/>
                     <span>Sort by</span>
@@ -245,38 +273,62 @@ const SelectedPhoto = () =>{
                     </select>
                     <img src={arrow} alt="Select" />
                 </div>
+                :
+                <div className="button_filters">
+                    <img src={filter} alt="Filter" onClick={() => seeFilters()}/>
+                </div>
+                }
             </div>
             <div className="container_filters_photographs">
-                <div className="filters">
+                <div className="filters" id="filters">
+                    {showFiltersMovil
+                    ?
+                    <div className="header_movil">
+                        <div className="photos_and_filters_title_movil">
+                            <span>Photography</span><span className='separator'> / </span><span className='premium_photos'>Premium Photos</span>
+                        </div>
+                        <div className="button_filters">
+                            <img src={filter} alt="Filter" onClick={() => seeFilters()}/>
+                        </div>
+                    </div>
+                    :
+                    null
+                    }
                     <div className="categories">
                         <div className="title_filters">Category</div>
+                        {showFiltersMovil
+                        ?
+                        <div className='close_movil_filters' onClick={() => closeFilters()}>X</div>
+                        :
+                        null
+                        }
                         <div className="checkbox_list">
                             <div className="checkbox_item">
-                                <input type="checkbox" name="People" id="People" onChange={() => addFilter("People")}/>
+                                <input type="checkbox" className='input_checkbox' name="People" id="People" onChange={() => addFilter("People")}/>
                                 <label htmlFor="People">People</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="Premium" id="Premium" onChange={() => addFilter("Premium")}/>
+                                <input type="checkbox" className='input_checkbox' name="Premium" id="Premium" onChange={() => addFilter("Premium")}/>
                                 <label htmlFor="Premium">Premium</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="Pets" id="Pets" onChange={() => addFilter("Pets")}/>
+                                <input type="checkbox" className='input_checkbox' name="Pets" id="Pets" onChange={() => addFilter("Pets")}/>
                                 <label htmlFor="Pets">Pets</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="Food" id="Food" onChange={() => addFilter("Food")}/>
+                                <input type="checkbox" className='input_checkbox' name="Food" id="Food" onChange={() => addFilter("Food")}/>
                                 <label htmlFor="Food">Food</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="Landmarks" id="Landmarks" onChange={() => addFilter("Landmarks")}/>
+                                <input type="checkbox" className='input_checkbox' name="Landmarks" id="Landmarks" onChange={() => addFilter("Landmarks")}/>
                                 <label htmlFor="Landmarks">Landmarks</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="Cities" id="Cities" onChange={() => addFilter("Cities")}/>
+                                <input type="checkbox" className='input_checkbox' name="Cities" id="Cities" onChange={() => addFilter("Cities")}/>
                                 <label htmlFor="Cities">Cities</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="Nature" id="Nature" onChange={() => addFilter("Nature")}/>
+                                <input type="checkbox" className='input_checkbox' name="Nature" id="Nature" onChange={() => addFilter("Nature")}/>
                                 <label htmlFor="Nature">Nature</label>
                             </div>
                         </div>
@@ -286,30 +338,39 @@ const SelectedPhoto = () =>{
                         <div className="title_filters">Price range</div>
                         <div className="checkbox_list">
                             <div className="checkbox_item">
-                                <input type="checkbox" name="lower_than_20" id="lower_than_20" onChange={() => addFilter("0-19")}/>
+                                <input type="checkbox" className='input_checkbox' name="lower_than_20" id="lower_than_20" onChange={() => addFilter("0-19")}/>
                                 <label htmlFor="lower_than_20">Lower than $20</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="20_100" id="20_100" onChange={() => addFilter("20-99")}/>
+                                <input type="checkbox" className='input_checkbox' name="20_100" id="20_100" onChange={() => addFilter("20-99")}/>
                                 <label htmlFor="20_100">$20 - $100</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="100_200" id="100_200" onChange={() => addFilter("100-200")}/>
+                                <input type="checkbox" className='input_checkbox' name="100_200" id="100_200" onChange={() => addFilter("100-200")}/>
                                 <label htmlFor="100_200">$100 - $200</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="more_than_200" id="more_than_200" onChange={() => addFilter("201")}/>
+                                <input type="checkbox" className='input_checkbox' name="more_than_200" id="more_than_200" onChange={() => addFilter("201")}/>
                                 <label htmlFor="more_than_200">More than $200</label>
                             </div>
                         </div>
                     </div>
+                    {showFiltersMovil
+                    ?
+                    <div className="save_clear_filters">
+                        <div className="clear_filters" onClick={() => closeAndClearFilters()}>CLEAR</div>
+                        <div className="save_filters" onClick={() => closeFilters()}>SAVE</div>
+                    </div>
+                    :
+                    null
+                    }
                 </div>
                 <div className="photographs">
                     <div className="photographs_list">
                         {photosPaginated.map((photo) =>{
                             return(
                                 <div className="photography" key={photo?.id}>
-                                    <div className="image_and_button" style={{backgroundImage: `url("${photo?.url}")`}}>
+                                    <div id={"photo" + photo?.id} className="image_and_button" style={{backgroundImage: `url("${photo?.url}")`}}>
                                         <div className="add_cart_photography">ADD TO CART</div>
                                     </div>
                                     <div className="category">{photo?.category}</div>

@@ -34,7 +34,7 @@
 }
 
 .photos_and_filters .header .order{
-    width: 18%;
+    width: 9em;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -67,6 +67,15 @@
     cursor: default;
     z-index:3;
 }
+
+.photos_and_filters .header .button_filters img{
+    margin-top: 1.5em;
+    width: 1.5em;
+    height: 1.5em;
+    cursor: pointer;
+}
+
+
 /*FILTROS*/
 .photos_and_filters .filters{
     font-size: 1.1em;
@@ -103,8 +112,8 @@
     position: relative;
 	background-color: white;
 	border: 3px solid black;
-    width:1.9em;
-    height:1.9em;
+    min-width:1.9em;
+    min-height:1.9em;
     cursor: pointer;
 }
 
@@ -142,13 +151,14 @@
 }
 
 .photos_and_filters .photographs .photography{
-    width: 30%;
+    width: 12.3em;
+    margin: 0 0.25em;
     margin-bottom: 2.5em;
 }
 
 .photos_and_filters .photographs .photography .image_and_button{
-    width: 100%;
-    height: 20em;
+    width: 12.3em;
+    height: 17.2em;
     position: relative;
     background-position: center;
     background-size: cover;
@@ -219,4 +229,213 @@
 .photos_and_filters .photographs .pages .disabled{
     pointer-events: none;
     opacity: 0.25;
+}
+
+/*
+------------------------------------------------------------------------------------------------------------------
+VERSION MOVIL
+------------------------------------------------------------------------------------------------------------------
+*/
+
+@media only screen and (max-width: 812px) {
+    .photos_and_filters .photographs{
+        font-size: 0.9em;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /*FILTROS EN MOVIL*/
+    .photos_and_filters .container_filters_photographs .filters .header_movil{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgb(203, 203, 203);
+        margin-left: -0.5em;
+        width: 100vw;
+        padding: 1.5em 1em 0 1.5em;
+        margin-bottom: 0.5em;
+        position: fixed;
+        top: 0;
+        z-index: 5;
+    }
+    .photos_and_filters .container_filters_photographs .filters .header_movil img{
+        width: 1em;
+        height: 1em;
+        margin-right: 2em;
+        margin-bottom: 0.5em;
+    }
+    .photos_and_filters .container_filters_photographs .filters .photos_and_filters_title_movil{
+        font-size: 0.6em;
+        margin-bottom: 1em;
+    }
+    .photos_and_filters .container_filters_photographs .filters .photos_and_filters_title_movil span{
+        font-weight: bold;
+    }
+
+    .photos_and_filters .container_filters_photographs .filters .photos_and_filters_title_movil .premium_photos{
+        font-weight: normal;
+        color: rgb(146, 146, 146);
+    }
+
+    .photos_and_filters .container_filters_photographs .filters .categories .close_movil_filters{
+        font-weight: bold;
+        position: fixed;
+        right: 1em;
+        top: 3.8em;
+    }
+
+    .photos_and_filters .header .photos_and_filters_title{
+        font-size: 0.9em;
+        font-weight: bold;
+    }
+    .photos_and_filters .container_filters_photographs{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+    }
+    .photos_and_filters .filters{
+        font-size: 2em;
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 2em;
+        z-index: 4;
+        background-color: white;
+        display: none;
+        padding: 1.8em 0 ;
+        overflow-y: scroll;
+    }
+    .photos_and_filters .filters hr{
+        width: 80%;
+    }
+    .photos_and_filters .filters .price_range{
+        padding-bottom: 8em;
+    }
+    .photos_and_filters .filters .save_clear_filters{
+        position: fixed;
+        width: 100vw;
+        height: 4.5em;
+        bottom: 0;
+        margin-left: -0.5em;
+        z-index: 5;
+        background-color: white;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        border-top: 7px solid rgb(227, 227, 227);
+    }
+    .photos_and_filters .filters .save_clear_filters .clear_filters, .photos_and_filters .filters .save_clear_filters .save_filters {
+        border: 4px solid black;
+        padding: 0.5em 2em;
+        width: 3em;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .photos_and_filters .filters .save_clear_filters .save_filters{
+        border: 4px solid black;
+        background-color: black;
+        color: white;
+        padding: 0.5em 2em;
+    }
+
+    .photos_and_filters .filters .checkbox_list .checkbox_item{
+        margin: 1em 0;
+    }
+    
+    .photos_and_filters .filters .checkbox_list input[type="checkbox"]{
+        -webkit-appearance: none;
+        position: relative;
+        background-color: white;
+        border: 3px solid black;
+        min-width:2.5em;
+        min-height:2.5em;
+        cursor: pointer;
+    }
+    .photos_and_filters .filters .checkbox_list input[type="checkbox"]:checked:after {
+        content: url(../../img/tick_movil.png);
+        font-size: 1.75em;
+        position: absolute;
+        top: 0.1em;
+        left: 0;
+    }
+    /*LISTADO DE FOTOS*/
+    .photos_and_filters .photographs{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .photos_and_filters .photographs .photography{
+        width: 100%;
+        margin: 0 0.25em;
+        margin-bottom: 2.5em;
+        font-size: 2.2em;
+    }
+    .photos_and_filters .photographs .photography .image_and_button{
+        width: 100%;
+        height: 25em;
+        position: relative;
+        background-position: center;
+        background-size: cover;
+    }
+}
+@media only screen and (max-width: 685px) {
+    .photos_and_filters .filters .save_clear_filters {
+        font-size: 0.8em;
+    }
+}
+@media only screen and (max-width: 610px) {
+    .photos_and_filters .photographs .photography{
+        width: 100%;
+        margin: 0 0.25em;
+        margin-bottom: 2.5em;
+        font-size: 1.8em;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .photos_and_filters .photographs .photography{
+        width: 100%;
+        margin: 0 0.25em;
+        margin-bottom: 2.5em;
+        font-size: 1.5em;
+    }
+}
+
+@media only screen and (max-width: 519px) {
+    .photos_and_filters .filters .save_clear_filters {
+        font-size: 0.6em;
+    }
+}
+@media only screen and (max-width: 482px) {
+    .photos_and_filters .filters{
+        padding: 1em 0 ;
+    }
+    .photos_and_filters .container_filters_photographs .filters .header_movil{
+        font-size: 0.8em;
+    }
+    .photos_and_filters .container_filters_photographs .filters .categories .close_movil_filters{
+        top: 3.1em;
+    }
+}
+@media only screen and (max-width: 450px) {
+    .photos_and_filters .header .photos_and_filters_title{
+        font-size: 0.7em;
+        font-weight: bold;
+    }
+}
+
+@media only screen and (max-width: 444px) {
+    .photos_and_filters .photographs .photography{
+        width: 100%;
+        margin: 0 0.25em;
+        margin-bottom: 2.5em;
+        font-size: 1.2em;
+    }
 }

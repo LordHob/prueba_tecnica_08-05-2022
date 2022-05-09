@@ -42,11 +42,22 @@ const SelectedPhoto = () =>{
         <div className='photo_day'>
             <div className="header">
                 <div className="photo_title">{maxSales[0]?.title}</div>
+                {document.documentElement.scrollWidth > 768
+                ?
                 <div className="add_to_cart_photo_day">ADD TO CART</div>
+                :
+                null
+                }
             </div>
             <div className="main_photo" style={{backgroundImage: `url("${maxSales[0]?.url}")`}}>
                 <div className="message_photo_day">Photo of the day</div>
             </div>
+            {document.documentElement.scrollWidth <= 768
+            ?
+            <div className="add_to_cart_photo_day_movil">ADD TO CART</div>
+            :
+            null
+            }
             <div className="information_main_photo">
                 <div className="about">
                     <div className="title_information_photo">About the {maxSales[0]?.title}</div>

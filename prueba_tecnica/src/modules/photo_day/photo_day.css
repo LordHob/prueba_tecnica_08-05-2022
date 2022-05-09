@@ -22,6 +22,17 @@
     letter-spacing: 0.1em;
     padding: 0.5em 2em;
     cursor: pointer;
+    text-align: center;
+}
+
+.photo_day .add_to_cart_photo_day_movil{
+    background-color: black;
+    color: white;
+    letter-spacing: 0.1em;
+    padding: 0.5em 2em;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 2em;
 }
 /*FOTO DE LA IMAGEN DEL DIA*/
 .photo_day .main_photo{
@@ -61,6 +72,7 @@
     align-items: flex-start;
     justify-content: space-between;
     margin-bottom: 6em;
+    margin-right: 1em;
 }
 
 .photo_day .information_main_photo .title_information_photo{
@@ -82,7 +94,7 @@
 }
 /*PEOPLE ALSO BUY Y DETAILS DE LA FOTO*/
 .photo_day .information_main_photo .alsobuy_and_details{
-    width: 32%;
+    width: 21.7em;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -103,9 +115,9 @@
 }
 
 .photo_day .information_main_photo .alsobuy_and_details .alsobuy_images .alsobuy_image{
-    width: 29%;
+    width: 6.1em;
     margin: 2em 0;
-    height: 8em;
+    height: 7.7em;
     background-position: center;
     background-size: cover;
 }
@@ -120,4 +132,104 @@
     font-size: 0.85em;
     color: rgb(108, 108, 108);
     margin: 0.75em 0;
+}
+
+/*
+------------------------------------------------------------------------------------------------------------------
+VERSION MOVIL
+------------------------------------------------------------------------------------------------------------------
+*/
+
+@media only screen and (max-width: 1200px) {
+    .photo_day .main_photo{
+      width: 100%;
+      height: 25.75em;
+    }
+}
+
+@media only screen and (max-width: 917px) {
+    .photo_day .information_main_photo .alsobuy_and_details .alsobuy_images .alsobuy_image{
+      font-size: 0.9em;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .photo_day .main_photo{
+      width: 100%;
+      height: 21em;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .photo_day{
+        margin-bottom: 0;
+    }
+    .photo_day .information_main_photo{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        font-size: 1.5em;
+    }
+    .photo_day .information_main_photo .about{
+        width: 100%;
+        margin-bottom: 1.5em;
+    }
+    .photo_day .information_main_photo .alsobuy_and_details{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    .photo_day .information_main_photo .alsobuy_and_details .alsobuy{
+        text-align: left;
+    }
+    .photo_day .information_main_photo .alsobuy_and_details .details{
+        width: 100%;
+        text-align: left;
+        margin-bottom: 1.5em;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .photo_day .main_photo{
+      width: 100%;
+      height: 15em;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .photo_day .main_photo{
+      width: 100%;
+      height: 12em;
+    }
+}
+
+@media only screen and (max-width: 553px) {
+    .photo_day .information_main_photo .alsobuy_and_details .alsobuy_images .alsobuy_image{
+        width: 4.9em;
+        margin: 2em 0;
+        height: 6.3em;
+        background-position: center;
+        background-size: cover;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .photo_day .main_photo{
+      width: 100%;
+      height: 10em;
+    }
+}
+
+@media only screen and (max-width: 444px) {
+    .photo_day .information_main_photo .alsobuy_and_details .alsobuy_images .alsobuy_image{
+        width: 3.9em;
+        margin: 2em 0;
+        height: 5em;
+        background-position: center;
+        background-size: cover;
+    }
 }

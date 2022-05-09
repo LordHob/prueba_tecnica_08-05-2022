@@ -5,7 +5,7 @@ import PhotosAndFilters from './modules/photos_and_filters/photos_and_filters.js
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" id ="App">
       <div className="container">
         <Header/>
         <SelectedPhoto/>
