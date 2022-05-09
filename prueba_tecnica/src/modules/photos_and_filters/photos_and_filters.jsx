@@ -85,13 +85,19 @@ const PhotosAndFilters = (props) =>{
                 }
             });
             if (photosCategories.length > 0 & photosPrizes.length > 0) {
+                let counter = 0;
                 photosCategories.map((photoCategory) =>{
                     photosPrizes.map((photoPrice) =>{
                         if (photoCategory.id === photoPrice.id) {
+                            counter++;
                             setPhotosFiltered(photosFiltered => [...photosFiltered, photoPrice]);
                         }
                     })
                 })
+                /*SI NO EXISTE NINGUNA COINCIDENCIA, NO MUESTRA NINGUNA FOTO*/
+                if (counter === 0) {
+                    setPhotosFiltered(photosFiltered => [{}]);
+                }
             }
             if (photosCategories.length > 0 & photosPrizes.length === 0) {
                 setPhotosFiltered(photosCategories);
