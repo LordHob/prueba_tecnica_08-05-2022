@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './photos_and_filters.css';
-import order from '../../img/order.png';
 import arrow from '../../img/arrow.png';
 import filter from '../../img/filter.png';
 import { photos } from '../../photos.js';
 import Photography from '../../atoms/photography/photography';
 import CheckboxItem from '../../atoms/checkboxItem/checkboxItem';
+import HeaderPhotosAndFilter from '../../molecules/headerPhotosAndFilter/headerPhotosAndFilter';
 
 const SelectedPhoto = (props) =>{
     
@@ -266,27 +266,11 @@ const SelectedPhoto = (props) =>{
 
     return(
         <div className='photos_and_filters'>
-            <div className="header">
-                <div className="photos_and_filters_title">
-                    <span>Photography</span><span className='separator'> / </span><span className='premium_photos'>Premium Photos</span>
-                </div>
-                {document.documentElement.scrollWidth > 768
-                ?
-                <div className="order">
-                    <img src={order} alt="Order" onClick={() => orderPhotos()}/>
-                    <span>Sort by</span>
-                    <select name="categories" id="categories_select" onChange={()=>configOrderKey()}>
-                        <option value="price" selected>Price</option>
-                        <option value="title">Title</option>
-                    </select>
-                    <img src={arrow} alt="Select" />
-                </div>
-                :
-                <div className="button_filters">
-                    <img src={filter} alt="Filter" onClick={() => seeFilters()}/>
-                </div>
-                }
-            </div>
+            <HeaderPhotosAndFilter
+                orderPhotos={orderPhotos}
+                configOrderKey={configOrderKey}
+                seeFilters={seeFilters}
+            />
             <div className="container_filters_photographs">
                 <div className="filters" id="filters">
                     {showFiltersMovil
