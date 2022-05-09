@@ -5,7 +5,7 @@ import arrow from '../../img/arrow.png';
 import filter from '../../img/filter.png';
 import { photos } from '../../photos.js';
 
-const SelectedPhoto = () =>{
+const SelectedPhoto = (props) =>{
     
     /*HOOKS*/
     const [photosFiltered, setPhotosFiltered] = useState([]);
@@ -371,7 +371,7 @@ const SelectedPhoto = () =>{
                             return(
                                 <div className="photography" key={photo?.id}>
                                     <div id={"photo" + photo?.id} className="image_and_button" style={{backgroundImage: `url("${photo?.url}")`}}>
-                                        <div className="add_cart_photography">ADD TO CART</div>
+                                        <div className="add_cart_photography" onClick={() => props.addToCart(photo)}>ADD TO CART</div>
                                     </div>
                                     <div className="category">{photo?.category}</div>
                                     <div className="title">{photo?.title}</div>

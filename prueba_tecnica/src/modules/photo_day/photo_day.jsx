@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './photo_day.css';
-import foto1 from '../../img/foto1.jpg';
-import foto2 from '../../img/foto2.jpeg';
-import foto3 from '../../img/foto3.jpeg';
 import { photos } from '../../photos.js';
 
-const SelectedPhoto = () =>{
+const PhotoDay = (props) =>{
 
     const [maxSales, setMaxSales] = useState({});
     const [secondSales, setSecondSales] = useState({});
@@ -44,7 +41,7 @@ const SelectedPhoto = () =>{
                 <div className="photo_title">{maxSales[0]?.title}</div>
                 {document.documentElement.scrollWidth > 768
                 ?
-                <div className="add_to_cart_photo_day">ADD TO CART</div>
+                <div className="add_to_cart_photo_day" onClick={() => props.addToCart(maxSales[0])}>ADD TO CART</div>
                 :
                 null
                 }
@@ -88,4 +85,4 @@ const SelectedPhoto = () =>{
     )
 }
 
-export default SelectedPhoto;
+export default PhotoDay;

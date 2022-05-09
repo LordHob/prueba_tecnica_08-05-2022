@@ -3,6 +3,105 @@
     flex-direction: column;
     align-items: flex-end;
     margin: 1.5em 0;
+    position: relative;
+}
+
+.header .shopping_cart{
+    display: flex;
+    flex: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+/*CARRITO DE LA COMPRAR CON SUS PRODUCTOS*/
+.header .shopping_cart .shopping_cart_information{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border: 0.2em solid rgb(225, 225, 225);
+    width: 28em;
+    position: absolute;
+    z-index: 4;
+    background-color: white;
+    top: 3.5em;
+    right: 8em
+}
+
+.header .shopping_cart .shopping_cart_information .close_shopping_cart{
+    width: 100%;
+    font-size: 1.6em;
+    font-weight: bold;
+    text-align: right;
+    margin: 0.25em 0;
+    padding-right: 2em;
+}
+
+.header .shopping_cart .shopping_cart_information .close_shopping_cart span{
+    cursor: pointer;
+}
+
+.header .shopping_cart .shopping_cart_information .products_shopping_cart{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.header .shopping_cart .shopping_cart_information .product_shopping_cart{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.75em 0;
+}
+
+.header .shopping_cart .shopping_cart_information .information_product{
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 0 1em;
+}
+
+.header .shopping_cart .shopping_cart_information .information_product .price_product{
+    color: rgb(101, 101, 101);
+    font-size: 1.4em;
+    font-weight: normal;
+}
+
+.header .shopping_cart .shopping_cart_information .photo_product{
+    width: 10em;
+    height: 5em;
+    background-position: center;
+    background-size: cover;
+    margin: 0 2em;
+}
+
+.header .shopping_cart .shopping_cart_information hr{
+    width: 90%;
+    height: 0.1em;
+    border: 0px;
+    background-color: rgb(225, 225, 225);
+    margin: 1em 0 1.5em 0;
+}
+
+.header .shopping_cart .shopping_cart_information .button_clear_shopping_cart{
+    width: 90%;
+    border: 4px solid black;
+    text-align: center;
+    font-size: 1.5em;
+    padding: 0.5em 0;
+    margin-bottom: 1em;
+    cursor: pointer;
+}
+/*NOTIFICACION DE CARRO DE LA COMPRA*/
+.header .shopping_cart .shopping_cart_notification{
+    background-color: black;
+    color: white;
+    margin-right: 4em;
+    margin-bottom: 1em;
+    padding: 0.15em 0.4em;
+    cursor: pointer;
 }
 
 .header img{
