@@ -269,7 +269,7 @@ const SelectedPhoto = (props) =>{
                     <span>Sort by</span>
                     <select name="categories" id="categories_select" onChange={()=>configOrderKey()}>
                         <option value="price" selected>Price</option>
-                        <option value="price">Name</option>
+                        <option value="title">Title</option>
                     </select>
                     <img src={arrow} alt="Select" />
                 </div>
